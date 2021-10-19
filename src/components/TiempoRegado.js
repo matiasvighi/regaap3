@@ -7,12 +7,17 @@ import Button from '@material-ui/core/Button';
 export default function TiempoRegado() {
   
 var boton = ["outlined","contained","outlined","outlined","outlined","outlined"]
-
+const botone = (event) => {
+   console.log("garlopa",event); };
 
     return (
         <p>
           
-          <Button variant={boton[0]}>Asp1</Button>
+          <Button 
+          onClick={botone(2)}
+          variant={boton[0]}>Asp1
+          
+          </Button>
           <Button variant={boton[1]}>Asp2</Button>
           <Button variant={boton[2]}>Asp3</Button>
           <Button variant={boton[3]}>Asp4</Button>
