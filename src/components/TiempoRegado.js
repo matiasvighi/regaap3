@@ -17,7 +17,7 @@ var boton = ["outlined","contained","outlined","outlined","outlined","outlined"]
           <Button variant={boton[2]}>Asp3</Button>
           <Button variant={boton[3]}>Asp4</Button>
           <Button variant={boton[4]}>Asp5</Button>
-          <Button variant={boton[5]}>Asp6</Button>
+          <Button variant={boton[5]}>Asp8</Button>
         </p>
       );
     }
