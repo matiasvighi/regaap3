@@ -1,5 +1,4 @@
 import * as React from "react";
-import React, { useState, useEffect } from "react";
 
 import TextField from "@material-ui/core/TextField";
 
@@ -21,11 +20,11 @@ export default function TiempoRegado() {
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
-  const [field, setField] = React.useState("aspersor1");
+  const [field, setField] = React.useState(false);
 
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
-
+  var ispressed = Boolean(field)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     console.log(event.currentTarget);
@@ -38,16 +37,16 @@ export default function TiempoRegado() {
     console.log("target name", event.currentTarget.id);
   };
   const handleClick3 = (event) => {
-    setField(event.currentTarget);
+    setField(true),
+    console.log("estoy tocando el boton delcampo de texto"),
+    console.log(event),console.log("event"),console.log(field),console.log("field");
+
   };
   const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
   };
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `test ${field} times`;
-  });
+  
 
   return (
     <div>
@@ -111,6 +110,7 @@ export default function TiempoRegado() {
           onClick={
             handleClick3
             //ACA   VA  LO  DEL   CAMPO  DE   TEXTO
+
           }
         >
           Nombrar
@@ -134,6 +134,10 @@ export default function TiempoRegado() {
         <MenuItem onClick={handleClose}>10'</MenuItem>
         <MenuItem onClick={handleClose}>1 hs</MenuItem>
       </Menu>
-    </div>
+<div>
+      {ispressed? <porongademono>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" /></porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
+      </div>
+       </div>
   );
 }
