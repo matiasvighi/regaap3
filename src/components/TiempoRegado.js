@@ -7,24 +7,24 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import Button from "@material-ui/core/Button";
-import { SentimentSatisfiedAlt } from "@material-ui/icons";
+import { SentimentSatisfiedAlt, SettingsSystemDaydreamRounded } from "@material-ui/icons";
 
 export default function TiempoRegado() {
-  var aspersores = {
-    aspersor1: "Aspersor1",
-    aspersor2: "Aspersor2",
-    aspersor3: "Aspersor3",
-    aspersor4: "Aspersor4",
-    aspersor5: "Aspersor5",
-    aspersor6: "Aspersor6",
-  };
+ 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [field, setField] = React.useState(false);
-
+  const [aspersores, setAspersores] =React.useState({aspersor1: "Aspersor1",
+  aspersor2: "Aspersor2",
+  aspersor3: "Aspersor3",
+  aspersor4: "Aspersor4",
+  aspersor5: "Aspersor5",
+  aspersor6: "Aspersor6",})
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
   var ispressed = Boolean(field)
+  const [name, setName] =React.useState("Nombre del boton") ;
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     console.log(event.currentTarget);
@@ -39,9 +39,12 @@ export default function TiempoRegado() {
   const handleClick3 = (event) => {
     setField(true),
     console.log("estoy tocando el boton delcampo de texto"),
-    console.log(event),console.log("event"),console.log(field),console.log("field");
+    console.log(event),console.log("event"),console.log(field),console.log("field"),
+    console.log(name,"nombre");
 
   };
+  
+  const handleChange = (event) => {setName(event.target.value),console.log(name,"nombre2"),setAspersores(...name),console.log(aspersores)};
   const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
@@ -136,7 +139,7 @@ export default function TiempoRegado() {
       </Menu>
 <div>
       {ispressed? <porongademono>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" /></porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
+      <TextField id="outlined-basic" label="Nombre del aspersor" value={name} onChange={handleChange} variant="outlined" /></porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
       </div>
        </div>
   );
