@@ -23,6 +23,7 @@ export default function TiempoRegado() {
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
   var ispressed = Boolean(field)
+
   const [name, setName] =React.useState("Nombre del boton") ;
 
   const handleClick = (event) => {
@@ -44,7 +45,7 @@ export default function TiempoRegado() {
 
   };
   
-  const handleChange = (event) => {setName(event.target.value),console.log(name,"nombre2"),setAspersores(...name),console.log(aspersores)};
+  const handleChange = (event) => {setName(event.target.value),console.log(name,"nombre2"),setAspersores({...aspersores, aspersor1: name}),console.log(aspersores)};
   const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
