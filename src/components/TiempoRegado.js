@@ -15,12 +15,12 @@ export default function TiempoRegado() {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [field, setField] = React.useState(false);
   const [aspersores, setAspersores] =React.useState([
-  {aspersor1: 1, tiempo: 5},
-  {aspersor2: 2, tiempo: 5},
-  {aspersor3: 3, tiempo: 5},
-  {aspersor4: 4, tiempo: 5},
-  {aspersor5: 5, tiempo: 5},
-  {aspersor6: 6, tiempo: 5}])
+  {id:1, aspersor: "boton1", tiempo: 5},
+  {id:2, aspersor: "boton2", tiempo: 5},
+  {id:3, aspersor: "boton3", tiempo: 5},
+  {id:4, aspersor: "boton4", tiempo: 5},
+  {id:5, aspersor: "boton5", tiempo: 5},
+  {id:6, aspersor: "boton6", tiempo: 5}])
   const [currentMenu, setCurrentMenu] =React.useState({
     menu:0,
     submenu:0
@@ -60,13 +60,20 @@ export default function TiempoRegado() {
   
   const handleChange = (event) => {
  console.log("numero menú",currentMenu.menu)
+ var newArray = aspersores   
+ const garlopa = currentMenu.menu;
+ setName(event.target.value);
+ const aspersorIndex = newArray.findIndex(aspersores=> aspersores.id === garlopa);
+ newArray[aspersorIndex] = { ...newArray[aspersorIndex], aspersor:name };
+ var newObject= newArray
+ console.log(newArray[0], newArray[1], "array?")
     
- const garlopa = currentMenu.menu
-    
-    setName(event.target.value),console.log(name,"nombre2"),setAspersores({...aspersores, garlopa: name}),console.log(aspersores)};
+   console.log(name,"nombre2"),setAspersores(newArray),console.log(aspersores,"coso completo",aspersores[0].aspersor)};
    //ver como embocar lo de ...aspersores, ksks (ya que ahora están dentro de un array, justamente el n del array es el n, por eso no habria que hacer magias raras)
     //preguntar como verga se hace para "llamar a una variable cuyo nombre voy a saber más adelante en js"(promise)
-  const handleClose = () => {
+  
+  
+    const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
   };
@@ -82,7 +89,9 @@ export default function TiempoRegado() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {aspersores[0].aspersor1}
+     
+        {aspersores[0].aspersor//aca va algo para buscar el "0" con el id pero así funciona bien
+        } 
       </Button>
       <Button
         id="2"
@@ -92,7 +101,7 @@ export default function TiempoRegado() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {aspersores.aspersor2}
+        {aspersores[1].aspersor}
       </Button>
       <Button
         id="3"
@@ -102,10 +111,12 @@ export default function TiempoRegado() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {aspersores.aspersor3}
+        {aspersores[2].aspersor}
       </Button>
 
+      
       <Button
+      
         id="4"
         variant="outlined"
         aria-controls="basic-menu"
@@ -113,9 +124,9 @@ export default function TiempoRegado() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {aspersores.aspersor4}
+        {aspersores[3].aspersor}
       </Button>
-
+      
       <Menu
         id="Menu aspersores"
         anchorEl={anchorEl}
@@ -158,9 +169,12 @@ export default function TiempoRegado() {
         <MenuItem onClick={handleClose}>10'</MenuItem>
         <MenuItem onClick={handleClose}>1 hs</MenuItem>
       </Menu>
+      {//en lugar de onchange van formularios ahí
+    }
 <div>
       {ispressed? <porongademono>
       <TextField id="outlined-basic" label="Nombre del aspersor" value={name} onChange={handleChange} variant="outlined" /></porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
+      
       </div>
        </div>
   );
