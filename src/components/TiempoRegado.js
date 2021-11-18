@@ -14,6 +14,7 @@ export default function TiempoRegado() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [field, setField] = React.useState(false);
+  const [naspersor, setNaspersor]=React.useState("")
   const [aspersores, setAspersores] =React.useState([
   {id:1, aspersor: "boton1", tiempo: 5},
   {id:2, aspersor: "boton2", tiempo: 5},
@@ -58,11 +59,16 @@ export default function TiempoRegado() {
 
   };
   
-  const handleChange = (event) => {
+  const handlechange = (event) => {
+    event.preventDefault();
+    setName(event.target.value);  }
+    const handleSubmit = (event) => { 
+      
+      event.preventDefault();
  console.log("numero menú",currentMenu.menu)
  var newArray = aspersores   
  const garlopa = currentMenu.menu;
- setName(event.target.value);
+
  const aspersorIndex = newArray.findIndex(aspersores=> aspersores.id === garlopa);
  newArray[aspersorIndex] = { ...newArray[aspersorIndex], aspersor:name };
  var newObject= newArray
@@ -131,7 +137,7 @@ export default function TiempoRegado() {
         id="Menu aspersores"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleClose}tu vieja
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
@@ -161,7 +167,7 @@ export default function TiempoRegado() {
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
-        }}
+        }}tu vieja
       >
         <MenuItem id="boton2" onClick={() => console.log("una pija de mono2")}>
           5'
@@ -171,11 +177,16 @@ export default function TiempoRegado() {
       </Menu>
       {//en lugar de onchange van formularios ahí
     }
-<div>
+<form>
       {ispressed? <porongademono>
-      <TextField id="outlined-basic" label="Nombre del aspersor" value={name} onChange={handleChange} variant="outlined" /></porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
+      <TextField id="outlined-basic" label="Nombre del aspersor"
+      variant="outlined" 
+      onChange={handlechange} 
+      onSubmit={handleSubmit}
       
-      </div>
+      /><Button type="submit">OK</Button>
+     </porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
+      </form>
        </div>
   );
 }
