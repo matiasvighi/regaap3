@@ -61,14 +61,14 @@ export default function TiempoRegado() {
   
   const handlechange = (event) => {
     event.preventDefault();
-    setName(event.target.value);  }
+    setNaspersor(event.target.value);  }
     const handleSubmit = (event) => { 
       
       event.preventDefault();
  console.log("numero menú",currentMenu.menu)
  var newArray = aspersores   
  const garlopa = currentMenu.menu;
-
+setName(naspersor)
  const aspersorIndex = newArray.findIndex(aspersores=> aspersores.id === garlopa);
  newArray[aspersorIndex] = { ...newArray[aspersorIndex], aspersor:name };
  var newObject= newArray
