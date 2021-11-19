@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
+import Button from "@material-ui/core/Button";
+
 import {
   Scheduler,
   WeekView,
@@ -20,26 +22,37 @@ var hola = 1
 export default function WeekView2 (props)
 {
   
-    console.log(props.val1[0].rRule,"??")
-  
-     var data = props.val1   
+    console.log(props.val1,"??")
+
+    const [datac, setDatac ] =React.useState(
+      props.val1
+    )
+    const handleClick =() => {
+    setDatac([{appointments: "FREQ=DAILY;INTERVAL=3;COUNT=99"}])
+    console.log(datac,"datac")  
+  }
+
+   var data = props.val1   
   
  
       
        console.log(data)
 
  
-  var commitChanges = data[0]
+  const commitChanges =(datac) => {setDatac([{appointments: "FREQ=DAILY;INTERVAL=1;COUNT=99"}])}
     
 
     return (
+      
+      
        
       <Paper>
+        <Button id="1" variant="outlined" onClick={handleClick}>pito</Button>
         
         <Scheduler
       
  
-          data={data}
+          data={datac}
          
         >
  
@@ -66,6 +79,8 @@ export default function WeekView2 (props)
           <DragDropProvider />
         </Scheduler>
       </Paper>
+      
     );
+     
  
     }

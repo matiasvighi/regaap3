@@ -14,7 +14,7 @@ export default function Days() {
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
   console.log(alignment);
-  appointments[0].rRule = "FREQ=DAILY;INTERVAL=2;COUNT=99"
+  appointments[0].rRule = "FREQ=DAILY;INTERVAL=6;COUNT=99"
   appointments[0].id = 2
   
   console.log(appointments[0].rRule)
