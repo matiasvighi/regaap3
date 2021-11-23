@@ -23,14 +23,29 @@ export default function WeekView2 (props)
 {
   
     console.log(props.val1,"??")
+    var garlopa = [props.val1]
 
     const [datac, setDatac ] =React.useState(
       props.val1
     )
     const handleClick =() => {
-    setDatac([{appointments: "FREQ=DAILY;INTERVAL=3;COUNT=99"}])
-    console.log(datac,"datac")  
-  }
+      
+      setDatac([ {
+        
+          title: 'Regado',
+          startDate: new Date(2021, 5, 25, 9, 35),
+          endDate: new Date(2021, 5, 25, 11, 30),
+          id: 1,
+          rRule: 'FREQ=DAILY;INTERVAL=3;COUNT=99',
+          exDate: '20180628T063500Z,20180626T063500Z',
+          }
+          ])
+      console.log(datac,"datac")  
+    }
+    
+    
+        
+      
 
    var data = props.val1   
   
@@ -52,7 +67,7 @@ export default function WeekView2 (props)
         <Scheduler
       
  
-          data={datac}
+          data={props.val1}
          
         >
  
@@ -69,6 +84,7 @@ export default function WeekView2 (props)
             endDayHour={15}
           />
           <MonthView />
+          
           <Appointments />
  
           <Toolbar />

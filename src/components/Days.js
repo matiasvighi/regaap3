@@ -7,19 +7,30 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import WeekView2 from './WeekView2';
 import { appointments } from '../calendario/appointments';
+import { Appointments } from '@devexpress/dx-react-scheduler';
 
 export default function Days() {
-  const [alignment, setAlignment] = React.useState('left');
+  const [alignment, setAlignment] = React.useState("FREQ=DAILY;INTERVAL=1;COUNT=99");
+  const [appoitmentsL, setAppointmentsL] = React.useState ();
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
-  console.log(alignment);
-  appointments[0].rRule = "FREQ=DAILY;INTERVAL=6;COUNT=99"
-  appointments[0].id = 2
+  console.log(alignment,"alignment");
+  var basofia = []
+  basofia= appointments
+  basofia[0].rRule=alignment
   
+  
+  setAppointmentsL([basofia[0]])
+
+  
+  
+  console.log(appoitmentsL,"appointmentsl")
   console.log(appointments[0].rRule)
   console.log(appointments[0].id)
   console.log(appointments[0].exDate)
+
+ 
 
   
    };
@@ -37,35 +48,41 @@ export default function Days() {
       onChange={handleAlignment}
       aria-label="text alignment"
     >
-      <ToggleButton value="left" aria-label="left aligned">
+      <ToggleButton value="'FREQ=DAILY;INTERVAL=1;COUNT=99'," 
+      aria-label="left aligned">
         
       
         <p>Todos</p>
         
 
       </ToggleButton>
-      <ToggleButton value="center" aria-label="centered">
+      <ToggleButton value="'FREQ=DAILY;INTERVAL=2;COUNT=99',"
+       aria-label="centered">
       Dia por medio
       
        
      </ToggleButton>
-      <ToggleButton value="right" aria-label="right aligned">
+      <ToggleButton value='FREQ=DAILY;INTERVAL=3;COUNT=99' 
+      aria-label="right aligned">
       <p>Cada dos dias</p>
       </ToggleButton>
-      <ToggleButton value="justify" aria-label="justified" >
+      <ToggleButton value="'FREQ=DAILY;INTERVAL=4;COUNT=99',"
+       aria-label="justified" >
       <p>Cada 3 dias</p>
       </ToggleButton>
-      <ToggleButton value="tuvieja" aria-label="justified" >
+      <ToggleButton value="'FREQ=DAILY;INTERVAL=5;COUNT=99',"
+       aria-label="justified" >
       <p>Cada 4 dias</p>
       </ToggleButton>
-      <ToggleButton value="tu hermsana" aria-label="justified" >
+      <ToggleButton value="'FREQ=DAILY;INTERVAL=6;COUNT=99',"
+       aria-label="justified" >
       <p>Una vez por semana</p>
       </ToggleButton>
      
     </ToggleButtonGroup> 
      
       <p>
-      <WeekView2 val1={appointments}> </WeekView2>
+      <WeekView2 val1={appoitmentsL}> </WeekView2>
       
       </p>
   </p>    
