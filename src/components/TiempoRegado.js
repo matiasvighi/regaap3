@@ -32,7 +32,7 @@ export default function TiempoRegado() {
   const open2 = Boolean(anchorEl2);
   var ispressed = Boolean(field)
 
-  const [name, setName] =React.useState("Nombre del boton") ;
+  //const [name, setName] =React.useState("Nombre del boton") ;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,9 +43,9 @@ export default function TiempoRegado() {
     setCurrentMenu({...currentMenu, menu : numberMenu})
   };
   const handleClick2 = (event) => {
-    console.log("submenu2"),
-      setAnchorEl2(event.currentTarget),
-      console.log(event.currentTarget);
+    console.log("submenu2");
+    setAnchorEl2(event.currentTarget);
+    console.log(event.currentTarget);
     console.log("target name2", event.currentTarget.id);
     const numberSubMenu = Number(event.currentTarget.id)
     //aca poner una logica que extraiga el número de submenú y lo guarde en el estado acontinuación:
@@ -55,34 +55,48 @@ export default function TiempoRegado() {
     setField(true),
     console.log("estoy tocando el boton delcampo de texto"),
     console.log(event),console.log("event"),console.log(field),console.log("field"),
-    console.log(name,"nombre");
+  //  console.log(name,"nombre");
+    handleClose();
 
   };
   
   const handlechange = (event) => {
-    event.preventDefault();
-    setNaspersor(event.target.value);  }
+    
+    setNaspersor(event.target.value);  
+    console.log(naspersor,"nombre del boton");
+  }
     const handleSubmit = (event) => { 
       
-      event.preventDefault();
- console.log("numero menú",currentMenu.menu)
- var newArray = aspersores   
- const garlopa = currentMenu.menu;
-setName(naspersor)
- const aspersorIndex = newArray.findIndex(aspersores=> aspersores.id === garlopa);
- newArray[aspersorIndex] = { ...newArray[aspersorIndex], aspersor:name };
- var newObject= newArray
- console.log(newArray[0], newArray[1], "array?")
+    event.preventDefault();
+    console.log("numero menú",currentMenu.menu)
     
-   console.log(name,"nombre2"),setAspersores(newArray),console.log(aspersores,"coso completo",aspersores[0].aspersor)};
-   //ver como embocar lo de ...aspersores, ksks (ya que ahora están dentro de un array, justamente el n del array es el n, por eso no habria que hacer magias raras)
-    //preguntar como verga se hace para "llamar a una variable cuyo nombre voy a saber más adelante en js"(promise)
-  
+    var newArray = aspersores   
+    const garlopa = currentMenu.menu;
+    
+    const aspersorIndex = newArray.findIndex(aspersores=> aspersores.id === garlopa);
+    newArray[aspersorIndex] = { ...newArray[aspersorIndex], aspersor:naspersor };
+    var newObject= newArray
+    console.log(newArray[0], newArray[1], "array?")
+    
+    console.log(naspersor,"nombre2"),
+    setAspersores(newArray),
+    console.log(aspersores,"coso completo",aspersores[0].aspersor)
+    handleClick3()
+    //esto es una villa, preguntar a chori como se hace bien
+    setAnchorEl2(event.currentTarget);
+    setTimeout(function(){
+    setAnchorEl2(null)
+    setField(false)
+    }, 5);
+    // aca termina la villa 11114//
+    };
+   
   
     const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
-  };
+   
+    };
   
 
   return (
@@ -98,8 +112,8 @@ setName(naspersor)
      
         {aspersores[0].aspersor//aca va algo para buscar el "0" con el id pero así funciona bien
         } 
-      </Button>
-      <Button
+       </Button>
+       <Button
         id="2"
         variant="outlined"
         aria-controls="basic-menu"
@@ -108,27 +122,27 @@ setName(naspersor)
         onClick={handleClick}
       >
         {aspersores[1].aspersor}
-      </Button>
-      <Button
-        id="3"
-        variant="outlined"
-        aria-controls="basic-menu"
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
+        </Button>
+        <Button
+           id="3"
+          variant="outlined"
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
       >
         {aspersores[2].aspersor}
-      </Button>
+       </Button>
 
       
-      <Button
+       <Button
       
-        id="4"
-        variant="outlined"
-        aria-controls="basic-menu"
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
+          id="4"
+          variant="outlined"
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
       >
         {aspersores[3].aspersor}
       </Button>
@@ -148,17 +162,13 @@ setName(naspersor)
         <MenuItem
           id="boton2"
           onClose={handleClose}
-          onClick={
-            handleClick3
-            //ACA   VA  LO  DEL   CAMPO  DE   TEXTO
-
-          }
+          onClick={handleClick3}         
         >
           Nombrar
         </MenuItem>
-        <MenuItem id="boton3" onClose={handleClose}>
+       <MenuItem id="boton3" onClose={handleClose}>
           nada por ahora
-        </MenuItem>
+      </MenuItem>
       </Menu>
       <Menu
         id="Set aspersor"
@@ -169,24 +179,27 @@ setName(naspersor)
           "aria-labelledby": "basic-button",
         }}tu vieja
       >
-        <MenuItem id="boton2" onClick={() => console.log("una pija de mono2")}>
+       <MenuItem id="boton2" onClick={() => console.log("una pija de mono2")}>
           5'
-        </MenuItem>
-        <MenuItem onClick={handleClose}>10'</MenuItem>
-        <MenuItem onClick={handleClose}>1 hs</MenuItem>
-      </Menu>
-      {//en lugar de onchange van formularios ahí
-    }
-<form>
-      {ispressed? <porongademono>
-      <TextField id="outlined-basic" label="Nombre del aspersor"
-      variant="outlined" 
-      onChange={handlechange} 
-      onSubmit={handleSubmit}
+       </MenuItem>
+       <MenuItem onClick={handleClose}>10'</MenuItem>
+       <MenuItem onClick={handleClose}>1 hs</MenuItem>
+       </Menu>
+   
+      <form onSubmit={handleSubmit}>
+
+      {ispressed? 
+        <porongademono>
+        <TextField id="outlined-basic" label="Nombre del aspersor"
+        variant="outlined" 
+        onChange={handlechange} 
       
-      /><Button type="submit">OK</Button>
-     </porongademono>: <porongadeguanaco>chau</porongadeguanaco>}
-      </form>
-       </div>
+      
+        />
+        </porongademono>
+      :
+        <porongadeguanaco></porongadeguanaco>}
+        </form>
+    </div>
   );
 }
