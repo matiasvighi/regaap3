@@ -45,14 +45,14 @@ export default function Switches() {
         inputProps={{ 'aria-label': 'primary checkbox' }}
       />
 
-     <Sliderx val1={true} val2={1}></Sliderx>
+     <Sliderx val1={true} val2={0}></Sliderx>
    
      
    
-     <Sliderx val1={state.checkedA} val2={2}></Sliderx> 
+     <Sliderx val1={state.checkedA} val2={1}></Sliderx> 
      
-     <Sliderx val1={state.checkedB} val2={3} ></Sliderx>
-     <Sliderx val1={state.checkedC} val2={4}></Sliderx>
+     <Sliderx val1={state.checkedB} val2={2} ></Sliderx>
+     <Sliderx val1={state.checkedC} val2={3}></Sliderx>
      
     </div>
    
