@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { Flag } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
+import Guardaymuestrasliderx from './Guardaymuestrasliderxysw';
  
 const useStyles = makeStyles({
   root: {
@@ -18,26 +19,23 @@ export default function Sliderx(props) {
   
   
   const [value, setValue] = React.useState(30);
-  const [horarios, setHorarios] = React.useState([
-   {horario : 1, valor: 4, flag : true},
-   {horario : 2, valor: 9, flag : false},
-   {horario : 3, valor: 17, flag : false},
-   {horario : 4, valor: 23, flag : false}
-
-  ])
+  const [horarios, setHorarios] = React.useState(
+   {horario : 1, valor: 4, flag : false}
+  
+  )
   function valuetext(value) {
     return `${value}°C`;
   }
 
   const handleChange = (event, newValue) => {
     setValue(newValue) ; console.log ("pija", value,hola);
-    let newArray = horarios;
-    newArray[props.val2].horario=props.val2;
-    newArray[props.val2].valor=value;
-    newArray[props.val2].flag=props.val1;
+    let newobj = horarios;
+    newobj.horario=props.val2;
+    newobj.valor=value;
+    newobj.flag=props.val1;
     
-    setHorarios(newArray) ;
-    console.log(horarios,"state con todo",newArray);
+    setHorarios(newobj) ;
+   // console.log(horarios,"state con todo",newobj);
   };
 
 
@@ -56,7 +54,7 @@ var hola2 = !props.val1
       Horario {hola}
       </Typography>
       <Slider
-        defaultValue={30}
+        defaultValue={3}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
@@ -71,9 +69,10 @@ var hola2 = !props.val1
                
       />
       
-     
-   
-           
+        
+   <p>
+    <Guardaymuestrasliderx val3={horarios} ></Guardaymuestrasliderx>       
+     </p>    
      
     </div>
   );
